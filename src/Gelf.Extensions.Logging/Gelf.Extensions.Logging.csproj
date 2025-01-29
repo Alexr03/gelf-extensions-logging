@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionPrefix>0.2.1</VersionPrefix>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
@@ -9,14 +9,14 @@
     <Authors>Matt Cole, Alex Redding</Authors>
     <Description>GELF provider for Microsoft.Extensions.Logging with TCP TLS Certificate Authentication support</Description>
     <RepositoryUrl>https://github.com/mattwcole/gelf-extensions-logging</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/mattwcole/gelf-extensions-logging</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/alexr03/gelf-extensions-logging</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <PackageIconUrl>https://raw.githubusercontent.com/mattwcole/gelf-extensions-logging/master/icon.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/alexr03/gelf-extensions-logging/master/icon.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>gelf graylog microsoft logging extensions</PackageTags>
     <Copyright>2017 Matt Cole</Copyright>
     <PackageId>Alexr03.Gelf.Extensions.Logging</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

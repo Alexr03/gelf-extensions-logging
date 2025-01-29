@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.Json;
@@ -70,6 +71,12 @@ namespace Gelf.Extensions.Logging
                     break;
                 case decimal value:
                     jsonWriter.WriteNumber(key, value);
+                    break;
+                case DateTime value:
+                    jsonWriter.WriteString(key, value.ToString("u"));
+                    break;
+                case DateTimeOffset value:
+                    jsonWriter.WriteString(key, value.ToString("u"));
                     break;
                 default:
                     jsonWriter.WriteString(key, field.Value.ToString());
