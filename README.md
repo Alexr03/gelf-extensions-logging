@@ -4,10 +4,10 @@
 
 ## Usage
 
-Start by installing the [NuGet package](https://www.nuget.org/packages/Gelf.Extensions.Logging).
+Start by installing the [NuGet package](https://www.nuget.org/packages/Alexr03.Gelf.Extensions.Logging).
 
 ```sh
-dotnet add package Gelf.Extensions.Logging
+dotnet add package Alexr03.Gelf.Extensions.Logging
 ```
 
 ### ASP.NET Core
@@ -27,7 +27,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) => Host
                 options.LogSource = context.HostingEnvironment.ApplicationName;
                 options.AdditionalFields["machine_name"] = Environment.MachineName;
                 options.AdditionalFields["app_version"] = Assembly.GetEntryAssembly()
-                    ?.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+                    ?.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
             }));
     });
 ```

@@ -10,7 +10,7 @@ namespace Gelf.Extensions.Logging
     public class GelfLogger : ILogger
     {
         private static readonly Regex AdditionalFieldKeyRegex = new(@"^[\w\.\-]*$", RegexOptions.Compiled);
-        private static readonly HashSet<string> ReservedAdditionalFieldKeys = new() { "id" };
+        private static readonly HashSet<string> ReservedAdditionalFieldKeys = ["id"];
 
         private readonly string _name;
         private readonly GelfMessageProcessor _messageProcessor;
@@ -50,7 +50,11 @@ namespace Gelf.Extensions.Logging
             return logLevel != LogLevel.None;
         }
 
-        public IDisposable BeginScope<TState>(TState state) => ScopeProvider?.Push(state) ?? NullScope.Instance;
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull
+        {
+            return ScopeProvider?.Push(state) ?? NullScope.Instance;
+        }
+
 
         private static SyslogSeverity GetLevel(LogLevel logLevel)
         {
@@ -100,14 +104,14 @@ namespace Gelf.Extensions.Logging
         private IEnumerable<KeyValuePair<string, object?>> GetFactoryAdditionalFields(GelfLogContext logContext)
         {
             return Options.AdditionalFieldsFactory?.Invoke(logContext) ??
-                   Enumerable.Empty<KeyValuePair<string, object?>>();
+                   [];
         }
 
         private IEnumerable<KeyValuePair<string, object?>> GetScopeAdditionalFields()
         {
             if (!Options.IncludeScopes)
             {
-                return Enumerable.Empty<KeyValuePair<string, object?>>();
+                return [];
             }
 
             var additionalFields = new List<KeyValuePair<string, object?>>();
@@ -167,7 +171,7 @@ namespace Gelf.Extensions.Logging
         private IEnumerable<KeyValuePair<string, object?>> GetStateAdditionalFields<TState>(TState state)
         {
             var additionalFields = state as IEnumerable<KeyValuePair<string, object?>>
-                                   ?? Enumerable.Empty<KeyValuePair<string, object?>>();
+                                   ?? [];
 
             foreach (var field in additionalFields)
             {

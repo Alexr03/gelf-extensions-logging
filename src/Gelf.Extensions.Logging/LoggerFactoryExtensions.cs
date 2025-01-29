@@ -41,7 +41,7 @@ namespace Gelf.Extensions.Logging
 
             public T CurrentValue { get; }
 
-            public T Get(string name) => CurrentValue;
+            public T Get(string? name) => CurrentValue;
 
             public IDisposable OnChange(Action<T, string> listener) => new NullDisposable();
 

@@ -1,16 +1,15 @@
 ﻿using System.IO;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Gelf.Extensions.Logging
 {
     public class TcpGelfClient : IGelfClient
     {
-        private readonly GelfLoggerOptions _options;
-        private TcpClient? _client;
-        private Stream? _stream;
+        private protected readonly GelfLoggerOptions _options;
+        private protected TcpClient? _client;
+        private protected Stream? _stream;
 
         public TcpGelfClient(GelfLoggerOptions options)
         {
@@ -41,7 +40,7 @@ namespace Gelf.Extensions.Logging
             }
         }
 
-        private Stream GetStream(bool recreate)
+        protected virtual Stream GetStream(bool recreate)
         {
             if (recreate || _client == null || _stream == null || !_client.Connected)
             {

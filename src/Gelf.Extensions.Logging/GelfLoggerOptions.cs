@@ -19,7 +19,7 @@ namespace Gelf.Extensions.Logging
         /// <summary>
         ///     GELF server host.
         /// </summary>
-        public string? Host { get; set; }
+        public string Host { get; set; }
 
         /// <summary>
         ///     GELF server port.
@@ -75,5 +75,20 @@ namespace Gelf.Extensions.Logging
         ///     Include default fields (logger, exception, event_id, event_name).
         /// </summary>
         public bool IncludeDefaultFields { get; set; } = true;
+
+        /// <summary>
+        /// Use certificate authentication for TCP logging.
+        /// </summary>
+        public bool UseCertificateAuthentication { get; set; }
+
+        /// <summary>
+        /// The path to the certificate used for authentication.
+        /// </summary>
+        public string CertificatePath { get; set; }
+
+        /// <summary>
+        /// The path to the certificate key used for authentication.
+        /// </summary>
+        public string CertificateKeyPath { get; set; }
     }
 }

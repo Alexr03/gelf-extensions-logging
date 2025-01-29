@@ -10,7 +10,7 @@ namespace Gelf.Extensions.Logging
     {
         private readonly IOptionsMonitor<GelfLoggerOptions> _options;
         private readonly ConcurrentDictionary<string, GelfLogger> _loggers;
-        private readonly IDisposable _optionsReloadToken;
+        private readonly IDisposable? _optionsReloadToken;
 
         private IGelfClient? _gelfClient;
         private GelfMessageProcessor? _messageProcessor;
@@ -84,6 +84,7 @@ namespace Gelf.Extensions.Logging
             {
                 GelfProtocol.Udp => new UdpGelfClient(options),
                 GelfProtocol.Tcp => new TcpGelfClient(options),
+                GelfProtocol.TcpTls => new TcpTlsGelfClient(options),
                 GelfProtocol.Http => new HttpGelfClient(options),
                 GelfProtocol.Https => new HttpGelfClient(options),
                 _ => throw new ArgumentException("Unknown protocol.", nameof(options))
@@ -94,7 +95,7 @@ namespace Gelf.Extensions.Logging
         {
             _messageProcessor?.Stop();
             _gelfClient?.Dispose();
-            _optionsReloadToken.Dispose();
+            _optionsReloadToken?.Dispose();
         }
     }
 }
