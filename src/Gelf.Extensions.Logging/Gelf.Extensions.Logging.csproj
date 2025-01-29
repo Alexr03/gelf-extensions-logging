@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>0.2.2</VersionPrefix>
+    <VersionPrefix>0.2.4</VersionPrefix>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
@@ -16,7 +16,7 @@
     <PackageTags>gelf graylog microsoft logging extensions</PackageTags>
     <Copyright>2017 Matt Cole</Copyright>
     <PackageId>Alexr03.Gelf.Extensions.Logging</PackageId>
-    <Version>0.2.2</Version>
+    <Version>0.2.4</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

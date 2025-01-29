@@ -73,10 +73,10 @@ public static class GelfMessageExtensions
                 jsonWriter.WriteNumber(key, value);
                 break;
             case DateTime value:
-                jsonWriter.WriteNumber(key, ((DateTimeOffset)value).ToUnixTimeSeconds());
+                jsonWriter.WriteNumber(key, Utilities.GetTimestamp((DateTimeOffset)value));
                 break;
             case DateTimeOffset value:
-                jsonWriter.WriteNumber(key, value.ToUnixTimeSeconds());
+                jsonWriter.WriteNumber(key, Utilities.GetTimestamp(value));
                 break;
             default:
                 jsonWriter.WriteString(key, field.Value.ToString());

@@ -38,7 +38,7 @@ public class GelfLogger : ILogger
             ShortMessage = formatter(state, exception),
             Host = Options.LogSource,
             Level = GetLevel(logLevel),
-            Timestamp = GetTimestamp(),
+            Timestamp = Utilities.GetTimestamp(),
             AdditionalFields = GetAdditionalFields(logLevel, eventId, state, exception).ToArray()
         };
 
@@ -68,13 +68,6 @@ public class GelfLogger : ILogger
             LogLevel.Critical => SyslogSeverity.Critical,
             _ => throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel, "Log level not supported.")
         };
-    }
-
-    private static double GetTimestamp()
-    {
-        var totalMilliseconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-        var totalSeconds = totalMilliseconds / 1000d;
-        return Math.Round(totalSeconds, 3);
     }
 
     private IEnumerable<KeyValuePair<string, object?>> GetAdditionalFields<TState>(
