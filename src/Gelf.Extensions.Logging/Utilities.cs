@@ -11,4 +11,10 @@ public static class Utilities
         var totalSeconds = totalMilliseconds / 1000d;
         return Math.Round(totalSeconds, 3);
     }
+
+    public static long GetTimestampMilliseconds(DateTimeOffset? dateTime = null)
+    {
+        dateTime ??= DateTimeOffset.UtcNow;
+        return dateTime.Value.ToUnixTimeMilliseconds();
+    }
 }
